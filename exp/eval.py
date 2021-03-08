@@ -61,7 +61,7 @@ def compute_stats(model, data, label):
     """
     start_time = time.time()
     verb_logits, noun_logits  = model(data)
-    fps = (time.time() - start_time)/data.shape[1]
+    fps = 1.0/((time.time() - start_time)/data.shape[1])
    
  
     outputs = {"verb":verb_logits, "noun":noun_logits}
