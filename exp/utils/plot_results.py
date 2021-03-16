@@ -32,6 +32,7 @@ def create_bar_plot(models_noun_acc, models_verb_acc, models_noun_loss,
     plt.show()
 
 
+<<<<<<< HEAD
 def create_acc_loss_curve(results): 
     plt.style.use("ggplot")
 
@@ -56,3 +57,6 @@ def create_acc_loss_curve(results):
     ax2.set_ylabel("Acc")
     ax2.legend()
     plt.show()
+=======
+    
+>>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730

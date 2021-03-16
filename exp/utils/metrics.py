@@ -16,9 +16,18 @@ def accuracy(output, target, ks=(1,)) :
         pred = pred.t()
         # correct: (maxk, N)
         correct = pred.eq(target.view(1, -1).expand_as(pred))
+<<<<<<< HEAD
         res = []
         for k in ks:
             correct_k = correct[:k].reshape(-1).float().sum(0, keepdim=True)
 
             res.append(correct_k.mul_(100.0 / batch_size))
         return res
+=======
+
+        res = []
+        for k in ks:
+            correct_k = correct[:k].reshape(-1).float().sum(0, keepdim=True)
+            res.append(correct_k.mul_(100.0 / batch_size))
+        return res
+>>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
