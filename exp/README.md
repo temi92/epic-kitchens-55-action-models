@@ -64,6 +64,7 @@ optional arguments:
   -h, --help  show this help message and exit
 
 ```
+saves video with predicted labels on frame in ```output.avi```
 
 
 
