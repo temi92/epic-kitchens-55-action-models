@@ -66,7 +66,8 @@ cap = cv2.VideoCapture(str(args.video_file))
 
 #write video 
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 10.0, (1280,720))
+_, frame = cap.read()
+out = cv2.VideoWriter('output.avi',fourcc, 10.0, (frame.shape[1], frame.shape[0]))
 
 img_stack = []
 num_segments = 8
