@@ -32,4 +32,27 @@ def create_bar_plot(models_noun_acc, models_verb_acc, models_noun_loss,
     plt.show()
 
 
+def create_acc_loss_curve(results): 
+    plt.style.use("ggplot")
+
+    fig, (ax1, ax2) = plt.subplots(1, 2)
+
+    ind = np.arange(0, len(results["train_loss"]))
+    ax1.plot(ind, results["train_loss"], label="train_loss")
+    ax1.plot(ind, results["val_loss"], label="val_loss")
+
+    ax1.set_xticks(ind)
+
+
+    ax1.set_title("Loss comparison between train and val sets")
+    ax1.set_xlabel("Epoch")
+    ax1.set_ylabel("Loss")
+    ax1.legend()
     
+    ax2.plot(ind, results["train_acc"], label="train_acc")
+    ax2.plot(ind, results["val_acc"], label="val_acc")
+    ax2.set_title("Accuracy comparison between train and val sets")
+    ax2.set_xlabel("Epoch")
+    ax2.set_ylabel("Acc")
+    ax2.legend()
+    plt.show()

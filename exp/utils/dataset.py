@@ -46,8 +46,31 @@ class GulpVideoRecord(VideoRecord):
 
 
 
+class CustomDataSet(Dataset):
+    def __init__(self, gulped_dir, transform=None):
+        self.gd = GulpDirectory(gulped_dir)
+        self.items = list(self.gd.merged_meta_dict.items())
+        self.transform = transform
+
+    def __getitem__(self, index):
+        item_id, item_info = self.items[index]
+        images, meta = self.gd[item_id]
+        images = list(map(self.convert2PIL, images))
+        if self.transform is not None:
+            images = self.transform(images)
+
+        return images, meta
+
+    def __len__(self):
+        return len(self.items)
+
+    def convert2PIL(self, img):
+        return PIL.Image.fromarray(img).convert("RGB")
 
 class TSNDataSet(Dataset):
+    """
+    designed to interface with epic_training_kitchen_dataset
+    """
     def __init__(self, dataset, num_segments=8, seg_length=1, transform=None, random_shift=True, test_mode=True):
         self.dataset = dataset
         self.num_segments = num_segments
@@ -58,10 +81,10 @@ class TSNDataSet(Dataset):
 
     def __getitem__(self, index):
         record = self.dataset.video_records[index]
+        
         #TODO implement for training phase as well..
         if self.test_mode:
             segment_start_idxs = self.get_test_indices(record)
-       
 
         return self.get(record, segment_start_idxs)
 
