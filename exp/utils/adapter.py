@@ -3,7 +3,6 @@ from pathlib import Path
 import  numpy as np
 import PIL.Image
 from gulpio2.adapters import AbstractDatasetAdapter
-<<<<<<< HEAD
 from gulpio2.utils import resize_images
 import os
 import glob
@@ -11,12 +10,6 @@ import json
 import collections
 
 def read_img(imgs):
-=======
-
-
-
-def resize_img(imgs):
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
     for img_path in imgs:
         img = PIL.Image.open(img_path)
         if img is None:
@@ -26,29 +19,19 @@ def resize_img(imgs):
         yield img
 
 class DataSetAdapter(AbstractDatasetAdapter):
-<<<<<<< HEAD
     #conversion class used for gulping RGB frames with csv labels"""
-=======
-    """conversion class used for gulping RGB frames"""
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
     #ref = https://github.com/TwentyBN/GulpIO
     def __init__(self, image_path, annotations):
         self.image_path = image_path
         self.meta_data = self.convert(annotations)
-<<<<<<< HEAD
         
-=======
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
 
     def convert(self, annotations):
         data = []
         for i, row in annotations.reset_index().iterrows():
             metadata = row.to_dict()
             data.append(metadata)
-<<<<<<< HEAD
         print (data)
-=======
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
         return data
 
     def iter_data(self, slice_element=None):
@@ -60,11 +43,7 @@ class DataSetAdapter(AbstractDatasetAdapter):
                 for idx in range(m["start_frame"], m["stop_frame"] + 1)
             ]
 
-<<<<<<< HEAD
             frames = list(read_img(map(str, paths)))
-=======
-            frames = list(resize_img(map(str, paths)))
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
             m["frame_size"] = frames[0].shape
             m["num_frames"] = len(frames)
 
@@ -78,7 +57,6 @@ class DataSetAdapter(AbstractDatasetAdapter):
             
     def __len__(self):
         return len(self.meta_data)
-<<<<<<< HEAD
 
 
 
@@ -142,5 +120,3 @@ class CustomAdapter(AbstractDatasetAdapter):
 
     def __len__(self):
         return len(self.data)
-=======
->>>>>>> c6834a7b4f1d885c87bbeb781409803f055d6730
