@@ -82,7 +82,7 @@ while (cap.isOpened()):
         class_name = infer(images)  
         img_stack = []
 
-        cv2.putText(frame, class_name, org= (frame.shape[1] -150, 40),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1.5,
+        cv2.putText(frame, class_name, org= (frame.shape[1] -250, 55),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=2.5,
                     color=(255, 0, 0))
     out.write(frame)
 
