@@ -1,4 +1,10 @@
 
+## Installation
+```bash
+conda env create -n exp -f environment.yml
+conda activate exp
+```
+
 ## Task A
 ### Preprocess data
 
