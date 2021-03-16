@@ -64,6 +64,10 @@ tsn.load_state_dict(w_dict)
 
 cap = cv2.VideoCapture(str(args.video_file))
 
+#write video 
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+out = cv2.VideoWriter('output.avi',fourcc, 10.0, (1280,720))
+
 img_stack = []
 num_segments = 8
 while (cap.isOpened()):
@@ -80,6 +84,7 @@ while (cap.isOpened()):
 
         cv2.putText(frame, class_name, org= (frame.shape[1] -150, 40),fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1.5,
                     color=(255, 0, 0))
+    out.write(frame)
 
     cv2.imshow("frame", frame)
     if cv2.waitKey(100) & 0xFF == ord('q'): #output at 10FPS.
@@ -87,4 +92,4 @@ while (cap.isOpened()):
 
 cap.release()
 cv2.destroyAllWindows()
-
+out.release()
