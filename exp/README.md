@@ -65,6 +65,9 @@ optional arguments:
 
 ```
 saves video with predicted labels on frame in ```output.avi```
+Sample video of inference is shown as follows
+
+![result]("taskB/video.gif")
 
 
 
