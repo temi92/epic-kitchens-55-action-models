@@ -1,5 +1,6 @@
 
 ## Installation
+Dependencies can be installed using a conda enviroment with the ```enviroment.yml``` as follows
 ```bash
 conda env create -n exp -f environment.yml
 conda activate exp
