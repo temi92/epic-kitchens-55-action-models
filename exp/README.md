@@ -14,7 +14,7 @@ The output_dir contains the gulped data that is consumed by the eval.py script
 The command below compares model performance between the [TSN](https://github.com/yjxiong/temporal-segment-networks) and [TRN](https://github.com/zhoubolei/TRN-pytorch). The losses, accuracy and FPS comparision between the two models are displayed in bar plot for visualization
 
 ```bash
-python eval.py <path_to_gulped_data>
+python taskA/eval.py <path_to_gulped_data>
 ```
 ## TaskB
 ### Preprocess data
